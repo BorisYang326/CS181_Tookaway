@@ -62,7 +62,7 @@ class SearchProblem:
         util.raiseNotDefined()
 
 class Search_Unit:
-    def __init__(self,state,cost,path):
+    def __init__(self,state,path,cost):
         self.state = state
         self.cost = cost
         self.path = path
@@ -93,32 +93,76 @@ def depthFirstSearch(problem):
     "*** YOUR CODE HERE ***"
     stack=util.Stack()
     closed=[]
-    initial_state=(Search_Unit(problem.getInitialState(),0,[]))
+    new_path=[]
+    initial_state=(Search_Unit(problem.getStartState(),[],0))
     stack.push(initial_state)
-    while True:
-        if stack.isEmpty():
-            return False
+    while not stack.isEmpty():
         node=stack.pop()
-        if problem.isGoalState():
+        #print(node.path)
+        #print(1)
+        if problem.isGoalState(node.state):
             return node.path
-        if node not in closed:
+        if node.state not in closed:
             closed.append(node.state)
+            #print(closed)
             for curr_seccessor in problem.getSuccessors(node.state):
-                tem_1=curr_seccessor[0][0]
-                tem_2=curr_seccessor[0][1]
-                tem_3=curr_seccessor[0][2]
-                stack.push(Search_Unit(tem_1,tem_2,tem_3))
+                new_state = curr_seccessor[0]
+                new_path=node.path+[curr_seccessor[1]]
+                new_cost=curr_seccessor[2]+node.cost
+                stack.push(Search_Unit(new_state,new_path,new_cost))
         else:continue
+        #print(node.path)
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    queue=util.Queue()
+    closed=[]
+    new_path=[]
+    initial_state=(Search_Unit(problem.getStartState(),[],0))
+    queue.push(initial_state)
+    while not queue.isEmpty():
+        node=queue.pop()
+        #print(node.path)
+        #print(1)
+        if problem.isGoalState(node.state):
+            return node.path
+        if node.state not in closed:
+            closed.append(node.state)
+            #print(closed)
+            for curr_seccessor in problem.getSuccessors(node.state):
+                new_state = curr_seccessor[0]
+                new_path=node.path+[curr_seccessor[1]]
+                new_cost=curr_seccessor[2]+node.cost
+                queue.push(Search_Unit(new_state,new_path,new_cost))
+        else:continue
     util.raiseNotDefined()
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
+    priorityqueue=util.PriorityQueue()
+    closed=[]
+    new_path=[]
+    initial_state=(Search_Unit(problem.getStartState(),[],0))
+    priorityqueue.push(initial_state,0)
+    while not priorityqueue.isEmpty():
+        node=priorityqueue.pop()
+        #print(node.path)
+        #print(1)
+        if problem.isGoalState(node.state):
+            return node.path
+        if node.state not in closed:
+            closed.append(node.state)
+            #print(closed)
+            for curr_seccessor in problem.getSuccessors(node.state):
+                new_state = curr_seccessor[0]
+                new_path=node.path+[curr_seccessor[1]]
+                new_cost=curr_seccessor[2]+node.cost
+                priorityqueue.push(Search_Unit(new_state,new_path,new_cost),new_cost)
+        else:continue
+    util.raiseNotDefined()
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
@@ -131,8 +175,27 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
+    priorityqueue=util.PriorityQueue()
+    closed=[]
+    new_path=[]
+    initial_state=(Search_Unit(problem.getStartState(),[],0))
+    priorityqueue.push(initial_state,0+heuristic(initial_state.state,problem))
+    while not priorityqueue.isEmpty():
+        node=priorityqueue.pop()
+        #print(node.path)
+        #print(1)
+        if problem.isGoalState(node.state):
+            return node.path
+        if node.state not in closed:
+            closed.append(node.state)
+            #print(closed)
+            for curr_seccessor in problem.getSuccessors(node.state):
+                new_state = curr_seccessor[0]
+                new_path=node.path+[curr_seccessor[1]]
+                new_cost=curr_seccessor[2]+node.cost+heuristic(node.state,problem)
+                priorityqueue.push(Search_Unit(new_state,new_path,new_cost),new_cost)
+        else:continue
     util.raiseNotDefined()
-
 
 # Abbreviations
 bfs = breadthFirstSearch
