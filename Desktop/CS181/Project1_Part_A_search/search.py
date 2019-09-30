@@ -1,28 +1,3 @@
-Skip to content
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
- 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-Read the guide
-
- Unwatch 1
- Star0 Fork0BorisYang326/CS188
- Code Issues 0 Pull requests 0 Projects 0 Wiki Security Insights Settings
-Branch: master 
-CS188/Desktop/CS181/Project1_Part_A_search/search.py
-Find fileCopy path
- BorisYang326 first commit ai
-07ac9ec 11 hours ago
-1 contributor
-Executable File  120 lines (95 sloc)  3.74 KB
-RawBlameHistory
-  
 # search.py
 # ---------
 # Licensing Information:  You are free to use or extend these projects for
@@ -48,6 +23,7 @@ class SearchProblem:
     """
     This class outlines the structure of a search problem, but doesn't implement
     any of the methods (in object-oriented terminology: an abstract class).
+
     You do not need to change anything in this class, ever.
     """
 
@@ -60,6 +36,7 @@ class SearchProblem:
     def isGoalState(self, state):
         """
           state: Search state
+
         Returns True if and only if the state is a valid goal state.
         """
         util.raiseNotDefined()
@@ -67,6 +44,7 @@ class SearchProblem:
     def getSuccessors(self, state):
         """
           state: Search state
+
         For a given state, this should return a list of triples, (successor,
         action, stepCost), where 'successor' is a successor to the current
         state, 'action' is the action required to get there, and 'stepCost' is
@@ -77,12 +55,17 @@ class SearchProblem:
     def getCostOfActions(self, actions):
         """
          actions: A list of actions to take
+
         This method returns the total cost of a particular sequence of actions.
         The sequence must be composed of legal moves.
         """
         util.raiseNotDefined()
 
-
+class Search_Unit:
+    def __init__(self,state,cost,path):
+        self.state = state
+        self.cost = cost
+        self.path = path
 def tinyMazeSearch(problem):
     """
     Returns a sequence of moves that solves tinyMaze.  For any other maze, the
@@ -96,15 +79,36 @@ def tinyMazeSearch(problem):
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
+
     Your search algorithm needs to return a list of actions that reaches the
     goal. Make sure to implement a graph search algorithm.
+
     To get started, you might want to try some of these simple commands to
     understand the search problem that is being passed in:
+
     print "Start:", problem.getStartState()
     print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
+    stack=util.Stack()
+    closed=[]
+    initial_state=(Search_Unit(problem.getInitialState(),0,[]))
+    stack.push(initial_state)
+    while True:
+        if stack.isEmpty():
+            return False
+        node=stack.pop()
+        if problem.isGoalState():
+            return node.path
+        if node not in closed:
+            closed.append(node.state)
+            for curr_seccessor in problem.getSuccessors(node.state):
+                tem_1=curr_seccessor[0][0]
+                tem_2=curr_seccessor[0][1]
+                tem_3=curr_seccessor[0][2]
+                stack.push(Search_Unit(tem_1,tem_2,tem_3))
+        else:continue
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
