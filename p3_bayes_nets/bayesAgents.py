@@ -91,14 +91,26 @@ def constructBayesNet(gameState):
       constants defined at the top of this file.
     """
 
+    "*** YOUR CODE HERE ***"
+    ##util.raiseNotDefined()
     obsVars = []
     edges = []
     variableDomainsDict = {}
-
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-
+    variableDomainsDict[X_POS_VAR]=[X_POS_VALS[0],X_POS_VALS[1]]
+    variableDomainsDict[Y_POS_VAR]=[Y_POS_VALS[0],Y_POS_VALS[1],Y_POS_VALS[2],Y_POS_VALS[3]]
+    variableDomainsDict[HOUSE_VARS[0]]=[HOUSE_VALS[0],HOUSE_VALS[1],HOUSE_VALS[2],HOUSE_VALS[3]]
+    variableDomainsDict[HOUSE_VARS[1]] = [HOUSE_VALS[0], HOUSE_VALS[1], HOUSE_VALS[2], HOUSE_VALS[3]]
+    edges = [(X_POS_VAR, HOUSE_VARS[0]), (X_POS_VAR, HOUSE_VARS[1]), (Y_POS_VAR, HOUSE_VARS[0]),
+             (Y_POS_VAR, HOUSE_VARS[1])]
+    for housePos in gameState.getPossibleHouses():
+        for obsPos in gameState.getHouseWalls(housePos):
+            obsVar = OBS_VAR_TEMPLATE % obsPos
+            variableDomainsDict[obsVar]=[OBS_VALS[0],OBS_VALS[1],OBS_VALS[2]]
+            obsVars.append(obsVar)
+            edges.append((HOUSE_VARS[0],obsVar))
+            edges.append((HOUSE_VARS[1],obsVar))
     variables = [X_POS_VAR, Y_POS_VAR] + HOUSE_VARS + obsVars
+    ##print variables
     net = bn.constructEmptyBayesNet(variables, edges, variableDomainsDict)
     return net, obsVars
 
@@ -127,7 +139,12 @@ def fillYCPT(bayesNet, gameState):
 
     yFactor = bn.Factor([Y_POS_VAR], [], bayesNet.variableDomainsDict())
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    yFactor.setProbability({Y_POS_VAR:Y_POS_VALS[0]} ,PROB_BOTH_TOP)
+    yFactor.setProbability({Y_POS_VAR:Y_POS_VALS[1]},PROB_BOTH_BOTTOM)
+    yFactor.setProbability({Y_POS_VAR:Y_POS_VALS[2]},PROB_ONLY_LEFT_TOP)
+    yFactor.setProbability({Y_POS_VAR:Y_POS_VALS[3]},PROB_ONLY_LEFT_BOTTOM)
+    #util.raiseNotDefined()
+
     bayesNet.setCPT(Y_POS_VAR, yFactor)
 
 def fillHouseCPT(bayesNet, gameState):
@@ -192,7 +209,31 @@ def fillObsCPT(bayesNet, gameState):
     bottomLeftPos, topLeftPos, bottomRightPos, topRightPos = gameState.getPossibleHouses()
 
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    CenterPos=[]
+    ObsPos_list=[]
+    obsFactors=[] #store the 28-factors
+    obs_pos=[]
+    CenterPos.append(bottomRightPos)
+    CenterPos.append(topRightPos)
+    CenterPos.append(bottomLeftPos)
+    CenterPos.append(topLeftPos)
+    print CenterPos
+    for i in range(len(CenterPos)):
+        for j in range(-1,2):
+            for k in range(-1,2):
+                if not (j==0 and k==-1):ObsPos_list.append((CenterPos[i][0]+j,CenterPos[i][1]+k))
+    ObsPos_list=list(set(ObsPos_list)-set(CenterPos))
+    #print ObsPos_list
+    i=0
+    while(i!=3):
+        # print i
+        # print ['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')']
+        # print [GHOST_HOUSE_VAR,FOOD_HOUSE_VAR]
+        obsFactors.append(bn.Factor(['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')'],[GHOST_HOUSE_VAR,FOOD_HOUSE_VAR],bayesNet.variableDomainsDict()))
+        #print bn.Factor(['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')'],[GHOST_HOUSE_VAR,FOOD_HOUSE_VAR],bayesNet.variableDomainsDict())
+        i+=1
+    #print obsFactors
+    #util.raiseNotDefined()
 
 def getMostLikelyFoodHousePosition(evidence, bayesNet, eliminationOrder):
     """

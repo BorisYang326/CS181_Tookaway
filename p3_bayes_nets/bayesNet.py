@@ -260,7 +260,7 @@ class Factor(object):
 
         if not self.__variablesSet.issubset(set(inputVariableDomainsDict.keys())): # it's okay for variableDomainsDict to have more items than needed
             raise ValueError ("variableDomainsDict doesn't have all the input variables \n" \
-                               + str(self.__variablesSet))
+                               + str(self.__variablesSet)+'\n'+str(set(inputVariableDomainsDict.keys())))
 
         self.__unconditionedVariables = set(inputUnconditionedVariables)
         self.__conditionedVariables = set(inputConditionedVariables)
