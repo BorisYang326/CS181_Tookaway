@@ -100,9 +100,37 @@ def joinFactors(factors):
                     "Input factors: \n" +
                     "\n".join(map(str, factors)))
 
-
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    sub_uncondition_list = []
+    sub_condition_list = []
+    uncondition = ()
+    condition = ()
+    tem_set_unc = set([])
+    tem_set_con = set([])
+    final_dic = {}
+    i=0
+    for factor in factors:
+        sub_uncondition_list.append(factor.unconditionedVariables())
+        tem_set_unc |= factor.unconditionedVariables()
+        tem_set_con |= factor.conditionedVariables()
+        sub_condition_list.append(factor.conditionedVariables())
+        # for tem_var in sub_condition_list:
+        uncondition = list(tem_set_unc)
+        condition = list(tem_set_con - (tem_set_con & set(uncondition)))
+    JointFactor = Factor(uncondition, condition, factors[0].variableDomainsDict())
+    for new_dic in JointFactor.getAllPossibleAssignmentDicts():
+        prob = 1.0
+        for factor in factors:
+            prob *= factor.getProbability(new_dic)
+        final_dic[prob] = new_dic
+    for key in final_dic.keys():
+        JointFactor.setProbability(final_dic[key], key)
+    return JointFactor
+    # for i in factors:
+    #     print (i.getAllPossibleAssignmentDicts())
+    #     x=i.getProbability(i.getAllPossibleAssignmentDicts)
+    #     x*=i.
+    #util.raiseNotDefined()
 
 
 def eliminateWithCallTracking(callTrackingList=None):
@@ -151,8 +179,28 @@ def eliminateWithCallTracking(callTrackingList=None):
                     "unconditionedVariables: " + str(factor.unconditionedVariables()))
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
-
+        sub_condition_list = []
+        tem_set_unc = set([])
+        tem_set_con = set([])
+        final_dic = {}
+        tem_set_unc |= factor.unconditionedVariables()
+        tem_set_con |= factor.conditionedVariables()
+        sub_condition_list.append(factor.conditionedVariables())
+        uncondition = list(tem_set_unc-set([eliminationVariable]))
+        condition = list(tem_set_con - (tem_set_con & set(uncondition)))
+        ElminatedFactor = Factor(uncondition, condition, factor.variableDomainsDict())
+        for new_dic in ElminatedFactor.getAllPossibleAssignmentDicts():
+            prob=0
+            for eliminate_domian in factor.variableDomainsDict()[eliminationVariable]:
+                extra_dic={eliminationVariable:eliminate_domian}
+                input_dic=new_dic.copy()
+                #print(extra_dic)
+                #print (new_dic)
+                input_dic.update(extra_dic)
+                #print input_dic
+                prob+=factor.getProbability(input_dic)
+            ElminatedFactor.setProbability(new_dic,prob)
+        return ElminatedFactor
     return eliminate
 
 eliminate = eliminateWithCallTracking()

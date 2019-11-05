@@ -351,7 +351,7 @@ class Factor(object):
         assignmentsInOrder = self.__getAssignmentsInOrder(assignmentDict)
         if assignmentsInOrder not in self.__probDict:
             raise ValueError ("The input assignmentDict is not contained in this factor: \n" \
-                                +  str(self) + str(assignmentDict))
+                                +  str(self) + str(assignmentDict)+str(assignmentsInOrder))
         else:
             return self.__probDict[assignmentsInOrder]
 

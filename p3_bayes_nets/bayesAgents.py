@@ -209,31 +209,38 @@ def fillObsCPT(bayesNet, gameState):
     bottomLeftPos, topLeftPos, bottomRightPos, topRightPos = gameState.getPossibleHouses()
 
     "*** YOUR CODE HERE ***"
-    CenterPos=[]
+    CenterPos={TOP_RIGHT_VAL:topRightPos,BOTTOM_LEFT_VAL:bottomLeftPos,TOP_LEFT_VAL:topLeftPos,BOTTOM_RIGHT_VAL:bottomRightPos}
     ObsPos_list=[]
-    obsFactors=[] #store the 28-factors
-    obs_pos=[]
-    CenterPos.append(bottomRightPos)
-    CenterPos.append(topRightPos)
-    CenterPos.append(bottomLeftPos)
-    CenterPos.append(topLeftPos)
-    print CenterPos
-    for i in range(len(CenterPos)):
+    #print(CenterPos.values())
+    for i in CenterPos.values():
         for j in range(-1,2):
             for k in range(-1,2):
-                if not (j==0 and k==-1):ObsPos_list.append((CenterPos[i][0]+j,CenterPos[i][1]+k))
-    ObsPos_list=list(set(ObsPos_list)-set(CenterPos))
-    #print ObsPos_list
-    i=0
-    while(i!=3):
-        # print i
-        # print ['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')']
-        # print [GHOST_HOUSE_VAR,FOOD_HOUSE_VAR]
-        obsFactors.append(bn.Factor(['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')'],[GHOST_HOUSE_VAR,FOOD_HOUSE_VAR],bayesNet.variableDomainsDict()))
-        #print bn.Factor(['obs('+str(ObsPos_list[i][0])+','+str(ObsPos_list[i][1])+')'],[GHOST_HOUSE_VAR,FOOD_HOUSE_VAR],bayesNet.variableDomainsDict())
-        i+=1
-    #print obsFactors
-    #util.raiseNotDefined()
+                if not (j==0 and k==-1):ObsPos_list.append((i[0]+j,i[1]+k))
+    ObsPos_list=list(set(ObsPos_list)-set(CenterPos.values()))
+    #print(ObsPos_list)
+    for i in ObsPos_list:
+        Obs_Factor=bn.Factor([OBS_VAR_TEMPLATE%i],[GHOST_HOUSE_VAR,FOOD_HOUSE_VAR],bayesNet.variableDomainsDict())
+        for dic in Obs_Factor.getAllPossibleAssignmentDicts():
+            food_pos=dic[FOOD_HOUSE_VAR]
+            ghost_pos=dic[GHOST_HOUSE_VAR]
+            if(game.manhattanDistance(CenterPos[food_pos],i)>=3 and game.manhattanDistance(CenterPos[ghost_pos],i)>=3):
+                if(dic[OBS_VAR_TEMPLATE%i]==NO_OBS_VAL):
+                    Obs_Factor.setProbability(dic,1)
+                else:Obs_Factor.setProbability(dic,0)
+            elif(game.manhattanDistance(CenterPos[ghost_pos],i)<=2 and game.manhattanDistance(CenterPos[food_pos],i)>=3):
+                if(dic[OBS_VAR_TEMPLATE%i]==NO_OBS_VAL):
+                    Obs_Factor.setProbability(dic,0)
+                elif(dic[OBS_VAR_TEMPLATE%i]==RED_OBS_VAL):
+                    Obs_Factor.setProbability(dic,PROB_GHOST_RED)
+                else:Obs_Factor.setProbability(dic,1-PROB_GHOST_RED)
+            else:
+                if (dic[OBS_VAR_TEMPLATE%i] == NO_OBS_VAL):
+                    Obs_Factor.setProbability(dic, 0)
+                elif (dic[OBS_VAR_TEMPLATE%i] == RED_OBS_VAL):
+                    Obs_Factor.setProbability(dic, PROB_FOOD_RED)
+                else:
+                    Obs_Factor.setProbability(dic, 1 - PROB_FOOD_RED)
+        bayesNet.setCPT(OBS_VAR_TEMPLATE%i,Obs_Factor)
 
 def getMostLikelyFoodHousePosition(evidence, bayesNet, eliminationOrder):
     """

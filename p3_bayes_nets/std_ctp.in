@@ -1,29 +1,65 @@
-(12,2)
-(11,4)
-(10,4)
-(12,4)
-(10,3)
-(12,3)
-(10,2)
-(10,8)
-(10,7)
-(12,7)
-(10,6)
-(12,6)
-(11,8)
-(12,8)
-(4,4)
-(2,3)
-(4,3)
-(2,2)
-(4,2)
-(3,4)
-(2,4)
-(2,7)
-(4,7)
-(2,6)
-(4,6)
-(4,8)
-(2,8)
-(3,8)
-  
+***      | obs(4,11) |  foodHouse  |  ghostHouse |  Prob:  |
+***      ---------------------------------------------------
+***      |    blue   |   topLeft   |   topLeft   | 0.7000000 |
+***      |    red    |   topLeft   |   topLeft   | 0.3000000 |
+***      |    none   |   topLeft   |   topLeft   | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |   topLeft   |   topRight  | 0.7000000 |
+***      |    red    |   topLeft   |   topRight  | 0.3000000 |
+***      |    none   |   topLeft   |   topRight  | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |   topLeft   |  bottomLeft | 0.7000000 |
+***      |    red    |   topLeft   |  bottomLeft | 0.3000000 |
+***      |    none   |   topLeft   |  bottomLeft | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |   topLeft   | bottomRight | 0.7000000 |
+***      |    red    |   topLeft   | bottomRight | 0.3000000 |
+***      |    none   |   topLeft   | bottomRight | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |   topRight  |   topLeft   | 0.4000000 |
+***      |    red    |   topRight  |   topLeft   | 0.6000000 |
+***      |    none   |   topRight  |   topLeft   | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |   topRight  |   topRight  | 0.0e+00 |
+***      |    red    |   topRight  |   topRight  | 0.0e+00 |
+***      |    none   |   topRight  |   topRight  | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   |   topRight  |  bottomLeft | 0.0e+00 |
+***      |    red    |   topRight  |  bottomLeft | 0.0e+00 |
+***      |    none   |   topRight  |  bottomLeft | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   |   topRight  | bottomRight | 0.0e+00 |
+***      |    red    |   topRight  | bottomRight | 0.0e+00 |
+***      |    none   |   topRight  | bottomRight | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   |  bottomLeft |   topLeft   | 0.4000000 |
+***      |    red    |  bottomLeft |   topLeft   | 0.6000000 |
+***      |    none   |  bottomLeft |   topLeft   | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   |  bottomLeft |   topRight  | 0.0e+00 |
+***      |    red    |  bottomLeft |   topRight  | 0.0e+00 |
+***      |    none   |  bottomLeft |   topRight  | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   |  bottomLeft |  bottomLeft | 0.0e+00 |
+***      |    red    |  bottomLeft |  bottomLeft | 0.0e+00 |
+***      |    none   |  bottomLeft |  bottomLeft | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   |  bottomLeft | bottomRight | 0.0e+00 |
+***      |    red    |  bottomLeft | bottomRight | 0.0e+00 |
+***      |    none   |  bottomLeft | bottomRight | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   | bottomRight |   topLeft   | 0.4000000 |
+***      |    red    | bottomRight |   topLeft   | 0.6000000 |
+***      |    none   | bottomRight |   topLeft   | 0.0e+00 |
+***      ---------------------------------------------------
+***      |    blue   | bottomRight |   topRight  | 0.0e+00 |
+***      |    red    | bottomRight |   topRight  | 0.0e+00 |
+***      |    none   | bottomRight |   topRight  | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   | bottomRight |  bottomLeft | 0.0e+00 |
+***      |    red    | bottomRight |  bottomLeft | 0.0e+00 |
+***      |    none   | bottomRight |  bottomLeft | 1.0000000 |
+***      ---------------------------------------------------
+***      |    blue   | bottomRight | bottomRight | 0.0e+00 |
+***      |    red    | bottomRight | bottomRight | 0.0e+00 |
+***      |    none   | bottomRight | bottomRight | 1.0000000 |

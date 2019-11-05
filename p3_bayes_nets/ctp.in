@@ -1,28 +1,100 @@
-(4,7)
-(4,8)
-(2,8)
-(10,6)
-(10,3)
-(12,2)
-(10,7)
-(4,4)
-(12,6)
-(2,2)
-(12,3)
-(2,6)
-(11,4)
-(10,4)
-(10,8)
-(12,7)
-(2,3)
-(4,2)
-(2,7)
-(4,6)
-(11,8)
-(3,8)
-(12,4)
-(4,3)
-(12,8)
-(3,4)
-(2,4)
-(10,2)
+***      P(M1, O1, L1 | Q1, N1)
+***      | M1 |      O1     | L1 |             Q1             |   N1  |  Prob:  |
+***      ------------------------------------------------------------------------
+***      | l  |    help!    | 0  | myNameHasMoreThanOneLetter | -10.5 | 9.2e-02 |
+***      | m  |    help!    | 0  | myNameHasMoreThanOneLetter | -10.5 | 9.5e-02 |
+***      | n  |    help!    | 0  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | o  |    help!    | 0  | myNameHasMoreThanOneLetter | -10.5 | 0.10041 |
+***      | l  |     me!     | 0  | myNameHasMoreThanOneLetter | -10.5 | 2.9e-02 |
+***      | m  |     me!     | 0  | myNameHasMoreThanOneLetter | -10.5 | 4.3e-02 |
+***      | n  |     me!     | 0  | myNameHasMoreThanOneLetter | -10.5 | 8.6e-02 |
+***      | o  |     me!     | 0  | myNameHasMoreThanOneLetter | -10.5 | 4.5e-03 |
+***      | l  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter | -10.5 | 5.0e-02 |
+***      | m  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | n  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | o  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter | -10.5 | 1.9e-02 |
+***      | l  | InaBayesNet | 0  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | m  | InaBayesNet | 0  | myNameHasMoreThanOneLetter | -10.5 | 8.5e-02 |
+***      | n  | InaBayesNet | 0  | myNameHasMoreThanOneLetter | -10.5 | 4.7e-02 |
+***      | o  | InaBayesNet | 0  | myNameHasMoreThanOneLetter | -10.5 | 7.4e-02 |
+***      | l  |    help!    | 1  | myNameHasMoreThanOneLetter | -10.5 | 9.2e-02 |
+***      | m  |    help!    | 1  | myNameHasMoreThanOneLetter | -10.5 | 9.5e-02 |
+***      | n  |    help!    | 1  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | o  |    help!    | 1  | myNameHasMoreThanOneLetter | -10.5 | 0.10041 |
+***      | l  |     me!     | 1  | myNameHasMoreThanOneLetter | -10.5 | 2.9e-02 |
+***      | m  |     me!     | 1  | myNameHasMoreThanOneLetter | -10.5 | 4.3e-02 |
+***      | n  |     me!     | 1  | myNameHasMoreThanOneLetter | -10.5 | 8.6e-02 |
+***      | o  |     me!     | 1  | myNameHasMoreThanOneLetter | -10.5 | 4.5e-03 |
+***      | l  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter | -10.5 | 5.0e-02 |
+***      | m  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | n  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | o  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter | -10.5 | 1.9e-02 |
+***      | l  | InaBayesNet | 1  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | m  | InaBayesNet | 1  | myNameHasMoreThanOneLetter | -10.5 | 8.5e-02 |
+***      | n  | InaBayesNet | 1  | myNameHasMoreThanOneLetter | -10.5 | 4.7e-02 |
+***      | o  | InaBayesNet | 1  | myNameHasMoreThanOneLetter | -10.5 | 7.4e-02 |
+***      | l  |    help!    | 2  | myNameHasMoreThanOneLetter | -10.5 | 9.2e-02 |
+***      | m  |    help!    | 2  | myNameHasMoreThanOneLetter | -10.5 | 9.5e-02 |
+***      | n  |    help!    | 2  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | o  |    help!    | 2  | myNameHasMoreThanOneLetter | -10.5 | 0.10041 |
+***      | l  |     me!     | 2  | myNameHasMoreThanOneLetter | -10.5 | 2.9e-02 |
+***      | m  |     me!     | 2  | myNameHasMoreThanOneLetter | -10.5 | 4.3e-02 |
+***      | n  |     me!     | 2  | myNameHasMoreThanOneLetter | -10.5 | 8.6e-02 |
+***      | o  |     me!     | 2  | myNameHasMoreThanOneLetter | -10.5 | 4.5e-03 |
+***      | l  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter | -10.5 | 5.0e-02 |
+***      | m  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | n  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter | -10.5 | 6.3e-02 |
+***      | o  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter | -10.5 | 1.9e-02 |
+***      | l  | InaBayesNet | 2  | myNameHasMoreThanOneLetter | -10.5 | 7.5e-02 |
+***      | m  | InaBayesNet | 2  | myNameHasMoreThanOneLetter | -10.5 | 8.5e-02 |
+***      | n  | InaBayesNet | 2  | myNameHasMoreThanOneLetter | -10.5 | 4.7e-02 |
+***      | o  | InaBayesNet | 2  | myNameHasMoreThanOneLetter | -10.5 | 7.4e-02 |
+***      ------------------------------------------------------------------------
+***      | l  |    help!    | 0  | myNameHasMoreThanOneLetter |  1.34 | 3.7e-02 |
+***      | m  |    help!    | 0  | myNameHasMoreThanOneLetter |  1.34 | 3.1e-02 |
+***      | n  |    help!    | 0  | myNameHasMoreThanOneLetter |  1.34 | 8.1e-02 |
+***      | o  |    help!    | 0  | myNameHasMoreThanOneLetter |  1.34 | 2.9e-02 |
+***      | l  |     me!     | 0  | myNameHasMoreThanOneLetter |  1.34 | 7.1e-02 |
+***      | m  |     me!     | 0  | myNameHasMoreThanOneLetter |  1.34 | 6.1e-02 |
+***      | n  |     me!     | 0  | myNameHasMoreThanOneLetter |  1.34 | 8.2e-02 |
+***      | o  |     me!     | 0  | myNameHasMoreThanOneLetter |  1.34 | 8.9e-02 |
+***      | l  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter |  1.34 | 8.7e-02 |
+***      | m  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | n  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter |  1.34 | 3.0e-02 |
+***      | o  |  I'mTrapped | 0  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | l  | InaBayesNet | 0  | myNameHasMoreThanOneLetter |  1.34 | 6.4e-02 |
+***      | m  | InaBayesNet | 0  | myNameHasMoreThanOneLetter |  1.34 | 4.8e-02 |
+***      | n  | InaBayesNet | 0  | myNameHasMoreThanOneLetter |  1.34 | 9.7e-02 |
+***      | o  | InaBayesNet | 0  | myNameHasMoreThanOneLetter |  1.34 | 8.6e-02 |
+***      | l  |    help!    | 1  | myNameHasMoreThanOneLetter |  1.34 | 3.7e-02 |
+***      | m  |    help!    | 1  | myNameHasMoreThanOneLetter |  1.34 | 3.1e-02 |
+***      | n  |    help!    | 1  | myNameHasMoreThanOneLetter |  1.34 | 8.1e-02 |
+***      | o  |    help!    | 1  | myNameHasMoreThanOneLetter |  1.34 | 2.9e-02 |
+***      | l  |     me!     | 1  | myNameHasMoreThanOneLetter |  1.34 | 7.1e-02 |
+***      | m  |     me!     | 1  | myNameHasMoreThanOneLetter |  1.34 | 6.1e-02 |
+***      | n  |     me!     | 1  | myNameHasMoreThanOneLetter |  1.34 | 8.2e-02 |
+***      | o  |     me!     | 1  | myNameHasMoreThanOneLetter |  1.34 | 8.9e-02 |
+***      | l  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter |  1.34 | 8.7e-02 |
+***      | m  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | n  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter |  1.34 | 3.0e-02 |
+***      | o  |  I'mTrapped | 1  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | l  | InaBayesNet | 1  | myNameHasMoreThanOneLetter |  1.34 | 6.4e-02 |
+***      | m  | InaBayesNet | 1  | myNameHasMoreThanOneLetter |  1.34 | 4.8e-02 |
+***      | n  | InaBayesNet | 1  | myNameHasMoreThanOneLetter |  1.34 | 9.7e-02 |
+***      | o  | InaBayesNet | 1  | myNameHasMoreThanOneLetter |  1.34 | 8.6e-02 |
+***      | l  |    help!    | 2  | myNameHasMoreThanOneLetter |  1.34 | 3.7e-02 |
+***      | m  |    help!    | 2  | myNameHasMoreThanOneLetter |  1.34 | 3.1e-02 |
+***      | n  |    help!    | 2  | myNameHasMoreThanOneLetter |  1.34 | 8.1e-02 |
+***      | o  |    help!    | 2  | myNameHasMoreThanOneLetter |  1.34 | 2.9e-02 |
+***      | l  |     me!     | 2  | myNameHasMoreThanOneLetter |  1.34 | 7.1e-02 |
+***      | m  |     me!     | 2  | myNameHasMoreThanOneLetter |  1.34 | 6.1e-02 |
+***      | n  |     me!     | 2  | myNameHasMoreThanOneLetter |  1.34 | 8.2e-02 |
+***      | o  |     me!     | 2  | myNameHasMoreThanOneLetter |  1.34 | 8.9e-02 |
+***      | l  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter |  1.34 | 8.7e-02 |
+***      | m  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | n  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter |  1.34 | 3.0e-02 |
+***      | o  |  I'mTrapped | 2  | myNameHasMoreThanOneLetter |  1.34 | 5.4e-02 |
+***      | l  | InaBayesNet | 2  | myNameHasMoreThanOneLetter |  1.34 | 6.4e-02 |
+***      | m  | InaBayesNet | 2  | myNameHasMoreThanOneLetter |  1.34 | 4.8e-02 |
+***      | n  | InaBayesNet | 2  | myNameHasMoreThanOneLetter |  1.34 | 9.7e-02 |
+***      | o  | InaBayesNet | 2  | myNameHasMoreThanOneLetter |  1.34 | 8.6e-02 |
