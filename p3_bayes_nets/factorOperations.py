@@ -254,5 +254,39 @@ def normalize(factor):
                             str(factor))
 
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    # print (factor)
+    tem_set_con = []
+    x=set([])
+    # print factor.variableDomainsDict()
+    for k in factor.variableDomainsDict().keys():
+        if(len(factor.variableDomainsDict()[k])==1):
+            if(k not in factor.unconditionedVariables() and factor.conditionedVariables()):
+                print k
+                pass
+            else:
+                print k
+                tem_set_con.append(k)
+        else:pass
+    #print tem_set_con
+    #print factor.variableDomainsDict()
+    tem_set_con+=list(factor.conditionedVariables())
+    #print tem_set_con
+    tem_set_unc=[i for i in factor.unconditionedVariables() if i not in tem_set_con]
+    sum_prob=0
+    # print set(tem_set_con)
+    # print x
+    # print tem_set_con_1
+    # print tem_set_unc
+    #print factor.conditionedVariables()
+    #print factor.unconditionedVariables()
+    #print factor.variableDomainsDict()
+    NormalizedFactor = Factor(tem_set_unc,tem_set_con,factor.variableDomainsDict())
+    for sum_dic in factor.getAllPossibleAssignmentDicts():
+        sig_prob=factor.getProbability(sum_dic)
+        sum_prob+=sig_prob
+
+    for sum_dic_2 in factor.getAllPossibleAssignmentDicts():
+        NormalizedFactor.setProbability(sum_dic_2, factor.getProbability(sum_dic_2) / sum_prob)
+    return NormalizedFactor
+    #util.raiseNotDefined()
 
