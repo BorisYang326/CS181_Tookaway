@@ -255,7 +255,19 @@ def getMostLikelyFoodHousePosition(evidence, bayesNet, eliminationOrder):
     (This should be a very short method.)
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    plan_list=[]
+    intial_prob=0
+    index=0
+    food_factor=inference.inferenceByVariableElimination(bayesNet,FOOD_HOUSE_VAR,evidence,eliminationOrder)
+    for plan in food_factor.getAllPossibleAssignmentDicts():
+        plan_list.append((food_factor.getProbability(plan),plan))
+    for i in range(len(plan_list)):
+        if(plan_list[i][0]>=intial_prob):
+            intial_prob=plan_list[i][0]
+            index=i
+        else:pass
+    return plan_list[index][1]
+    #util.raiseNotDefined()
 
 
 class BayesAgent(game.Agent):

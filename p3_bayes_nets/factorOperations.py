@@ -107,7 +107,7 @@ def joinFactors(factors):
     condition = ()
     tem_set_unc = set([])
     tem_set_con = set([])
-    final_dic = {}
+    final_dic = []
     i=0
     for factor in factors:
         sub_uncondition_list.append(factor.unconditionedVariables())
@@ -118,13 +118,22 @@ def joinFactors(factors):
         uncondition = list(tem_set_unc)
         condition = list(tem_set_con - (tem_set_con & set(uncondition)))
     JointFactor = Factor(uncondition, condition, factors[0].variableDomainsDict())
+    #print JointFactor
+    #print 'print in joint'
     for new_dic in JointFactor.getAllPossibleAssignmentDicts():
         prob = 1.0
         for factor in factors:
             prob *= factor.getProbability(new_dic)
-        final_dic[prob] = new_dic
-    for key in final_dic.keys():
-        JointFactor.setProbability(final_dic[key], key)
+            #print  str(factor.getProbability(new_dic)) +'       '+str(prob)
+        #print new_dic
+        final_dic.append((new_dic,prob))
+    #print final_dic
+    for i in final_dic:
+        #print '*********'
+        #print i[0]
+        JointFactor.setProbability(i[0], i[1])
+    #print JointFactor
+    #print 'print prob'
     return JointFactor
     # for i in factors:
     #     print (i.getAllPossibleAssignmentDicts())
@@ -260,13 +269,16 @@ def normalize(factor):
     # print factor.variableDomainsDict()
     for k in factor.variableDomainsDict().keys():
         if(len(factor.variableDomainsDict()[k])==1):
-            if(k not in factor.unconditionedVariables() and factor.conditionedVariables()):
-                print k
+            if(k not in (factor.unconditionedVariables() or factor.conditionedVariables())):
+                #print k+'   no con/inc var'
                 pass
             else:
-                print k
+                #print k not in (factor.unconditionedVariables() or factor.conditionedVariables())
+                #print k
                 tem_set_con.append(k)
         else:pass
+    #print factor.unconditionedVariables()
+    #print factor.conditionedVariables()
     #print tem_set_con
     #print factor.variableDomainsDict()
     tem_set_con+=list(factor.conditionedVariables())

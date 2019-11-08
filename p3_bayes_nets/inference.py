@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -31,7 +31,7 @@ def inferenceByEnumeration(bayesNet, queryVariables, evidenceDict):
                     the inference query.
     evidenceDict:   An assignment dict {variable : value} for the
                     variables which are presented as evidence
-                    (conditioned) in the inference query. 
+                    (conditioned) in the inference query.
     """
     callTrackingList = []
     joinFactorsByVariable = joinFactorsByVariableWithCallTracking(callTrackingList)
@@ -61,7 +61,7 @@ def inferenceByEnumeration(bayesNet, queryVariables, evidenceDict):
     fullJointOverQueryAndEvidence = incrementallyMarginalizedJoint
 
     # normalize so that the probability sums to one
-    # the input factor contains only the query variables and the evidence variables, 
+    # the input factor contains only the query variables and the evidence variables,
     # both as unconditioned variables
     queryConditionedOnEvidence = normalize(fullJointOverQueryAndEvidence)
     # now the factor is conditioned on the evidence variables
@@ -86,19 +86,19 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
         to eliminationOrder.  See inferenceByEnumeration for an example on
         how to use these functions.
 
-        You need to use joinFactorsByVariable to join all of the factors 
-        that contain a variable in order for the autograder to 
-        recognize that you performed the correct interleaving of 
+        You need to use joinFactorsByVariable to join all of the factors
+        that contain a variable in order for the autograder to
+        recognize that you performed the correct interleaving of
         joins and eliminates.
 
-        If a factor that you are about to eliminate a variable from has 
-        only one unconditioned variable, you should not eliminate it 
-        and instead just discard the factor.  This is since the 
-        result of the eliminate would be 1 (you marginalize 
-        all of the unconditioned variables), but it is not a 
+        If a factor that you are about to eliminate a variable from has
+        only one unconditioned variable, you should not eliminate it
+        and instead just discard the factor.  This is since the
+        result of the eliminate would be 1 (you marginalize
+        all of the unconditioned variables), but it is not a
         valid factor.  So this simplifies using the result of eliminate.
 
-        The sum of the probabilities should sum to one (so that it is a true 
+        The sum of the probabilities should sum to one (so that it is a true
         conditional probability, conditioned on the evidence).
 
         bayesNet:         The Bayes Net on which we are making a query.
@@ -106,12 +106,12 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
                           in the inference query.
         evidenceDict:     An assignment dict {variable : value} for the
                           variables which are presented as evidence
-                          (conditioned) in the inference query. 
+                          (conditioned) in the inference query.
         eliminationOrder: The order to eliminate the variables in.
 
-        Hint: BayesNet.getAllCPTsWithEvidence will return all the Conditional 
-        Probability Tables even if an empty dict (or None) is passed in for 
-        evidenceDict. In this case it will not specialize any variable domains 
+        Hint: BayesNet.getAllCPTsWithEvidence will return all the Conditional
+        Probability Tables even if an empty dict (or None) is passed in for
+        evidenceDict. In this case it will not specialize any variable domains
         in the CPTs.
 
         Useful functions:
@@ -131,7 +131,26 @@ def inferenceByVariableEliminationWithCallTracking(callTrackingList=None):
             eliminationOrder = sorted(list(eliminationVariables))
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        final_factors=[]
+        raw_factors=bayesNet.getAllCPTsWithEvidence(evidenceDict)
+        #for k in raw_factors:
+            #print k
+        #print '***********************************************'
+        for raw_rv in eliminationOrder:
+            raw_factors,proce_factor=joinFactorsByVariable(raw_factors,raw_rv)
+            #print proce_factor.unconditionedVariables()
+            #print remain_factors
+            if len(proce_factor.unconditionedVariables())==1:
+                pass
+            else:
+                final_factor=eliminate(proce_factor,raw_rv)
+                raw_factors.append(final_factor)
+            # print proce_factor
+            # print final_factor
+        #print final_factors
+        que_factor=joinFactors(raw_factors)
+        return (normalize(que_factor))
+        #util.raiseNotDefined()
 
 
     return inferenceByVariableElimination
@@ -156,8 +175,8 @@ def sampleFromFactorRandomSource(randomSource=None):
 
         Useful for inferenceByLikelihoodWeightingSampling
 
-        Returns an assignmentDict that contains the conditionedAssignments but 
-        also a random assignment of the unconditioned variables given their 
+        Returns an assignmentDict that contains the conditionedAssignments but
+        also a random assignment of the unconditioned variables given their
         probability.
         """
         if conditionedAssignments is None and len(factor.conditionedVariables()) > 0:
@@ -175,23 +194,23 @@ def sampleFromFactorRandomSource(randomSource=None):
                                 "factor.conditionedVariables: " + str(set(factor.conditionedVariables())))
 
             # Reduce the domains of the variables that have been
-            # conditioned upon for this factor 
+            # conditioned upon for this factor
             newVariableDomainsDict = factor.variableDomainsDict()
             for (var, assignment) in conditionedAssignments.items():
                 newVariableDomainsDict[var] = [assignment]
 
             # Get the (hopefully) smaller conditional probability table
-            # for this variable 
+            # for this variable
             CPT = factor.specializeVariableDomains(newVariableDomainsDict)
         else:
             CPT = factor
-        
+
         # Get the probability of each row of the table (along with the
         # assignmentDict that it corresponds to)
         assignmentDicts = sorted([assignmentDict for assignmentDict in CPT.getAllPossibleAssignmentDicts()])
         assignmentDictProbabilities = [CPT.getProbability(assignmentDict) for assignmentDict in assignmentDicts]
 
-        # calculate total probability in the factor and index each row by the 
+        # calculate total probability in the factor and index each row by the
         # cumulative sum of probability up to and including that row
         currentProbability = 0.0
         probabilityRange = []
@@ -201,7 +220,7 @@ def sampleFromFactorRandomSource(randomSource=None):
 
         totalProbability = probabilityRange[-1]
 
-        # sample an assignment with probability equal to the probability in the row 
+        # sample an assignment with probability equal to the probability in the row
         # for that assignment in the factor
         pick = randomSource.uniform(0.0, totalProbability)
         for i in range(len(assignmentDicts)):
