@@ -16,7 +16,6 @@ import itertools
 import random
 import busters
 import game
-import util
 
 from util import manhattanDistance
 
@@ -58,6 +57,7 @@ class DiscreteDistribution(dict):
         Normalize the distribution such that the total value of all keys sums
         to 1. The ratio of values for all keys will remain the same. In the case
         where the total value of the distribution is 0, do nothing.
+
         >>> dist = DiscreteDistribution()
         >>> dist['a'] = 1
         >>> dist['b'] = 2
@@ -75,11 +75,7 @@ class DiscreteDistribution(dict):
         {}
         """
         "*** YOUR CODE HERE ***"
-        sum=self.total()
-        if(sum!=0):
-            for i in self.keys():
-                self[i]=float(self[i])/sum
-        else:pass
+
     def sample(self):
         """
         Draw a random sample from the distribution and return the key, weighted
@@ -102,19 +98,6 @@ class DiscreteDistribution(dict):
         0.0
         """
         "*** YOUR CODE HERE ***"
-        x = []
-        y = []
-        choice=[]
-        self.normalize()
-        for i in range(len(self)):
-            x.append(list(self.items())[i][0])
-            y.append(list(self.items())[i][1])
-        z = random.random()
-        for i in range(len(self)):
-            if sum(y[:i]) < z <= sum(y[:i + 1]):
-                choice = x[i]
-        return choice
-
 
 
 class InferenceModule:
@@ -184,14 +167,6 @@ class InferenceModule:
         Return the probability P(noisyDistance | pacmanPosition, ghostPosition).
         """
         "*** YOUR CODE HERE ***"
-        # print (noisyDistance,pacmanPosition,ghostPosition,jailPosition)
-        if(noisyDistance!=None and ghostPosition!=jailPosition):
-            real_distance=util.manhattanDistance(pacmanPosition,ghostPosition)
-            prob=busters.getObservationProbability(noisyDistance,real_distance)
-        elif(noisyDistance==None and ghostPosition==jailPosition):prob=1.0
-        else:prob=0.0
-        return prob
-
 
     def setGhostPosition(self, gameState, ghostPosition, index):
         """
@@ -225,7 +200,6 @@ class InferenceModule:
         Collect the relevant noisy distance observation and pass it along.
         """
         distances = gameState.getNoisyGhostDistances()
-        #print(distances)
         if len(distances) >= self.index:  # Check for missing observations
             obs = distances[self.index - 1]
             self.obs = obs
@@ -300,26 +274,7 @@ class ExactInference(InferenceModule):
         position is known.
         """
         "*** YOUR CODE HERE ***"
-        #print(self.beliefs)
-        possible_state_list=self.allPositions
-        pac_pos=gameState.getPacmanPosition()
-        jail_pos=self.getJailPosition()
-        # prob_distribution=DiscreteDistribution()
-        prob_list=[]
-        updated_list=[]
-        for i in range(len(possible_state_list)):
-            prob_list.append(self.getObservationProb(observation,pac_pos,possible_state_list[i],jail_pos))
-        for i in range(len(possible_state_list)):
-            updated_list.append(prob_list[i]*self.beliefs[possible_state_list[i]])
-        # updated_list=[(i,j*self.beliefs[i]) for i, j in possible_state_list,prob_list]
-        for i in range(len(possible_state_list)):
-            self.beliefs[possible_state_list[i]]=updated_list[i]
         self.beliefs.normalize()
-        #print(self.beliefs)
-        #print(pacmanPosition)
-
-
-
 
     def elapseTime(self, gameState):
         """
@@ -331,20 +286,6 @@ class ExactInference(InferenceModule):
         current position is known.
         """
         "*** YOUR CODE HERE ***"
-        possible_state_list = self.allPositions
-        old_prob=DiscreteDistribution()
-        tem_prob=DiscreteDistribution()
-        for old_Pos in possible_state_list:
-            old_prob[old_Pos]=self.beliefs[old_Pos]
-        for old_Pos in possible_state_list:
-            newPosDist = self.getPositionDistribution(gameState,old_Pos)
-            for per_pos in newPosDist.keys():
-                tem_prob[per_pos]+=old_prob[old_Pos]*newPosDist[per_pos]
-        tem_prob.normalize()
-        self.beliefs=tem_prob
-        # tem_dict=DiscreteDistribution()
-        # for old_Pos in self.allPositions:
-
 
     def getBeliefDistribution(self):
         return self.beliefs
@@ -371,11 +312,6 @@ class ParticleFilter(InferenceModule):
         """
         self.particles = []
         "*** YOUR CODE HERE ***"
-        for i in range(self.numParticles):
-            for j in self.legalPositions:
-                self.particles.append(j)
-
-
 
     def observeUpdate(self, observation, gameState):
         """
@@ -390,27 +326,6 @@ class ParticleFilter(InferenceModule):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
-        temp_dict=DiscreteDistribution()
-        pacmanPos=gameState.getPacmanPosition()
-        jailPos=self.getJailPosition()
-        for ghost_pos in self.particles:
-            temp_dict[ghost_pos]+=self.getObservationProb(observation,pacmanPos,ghost_pos,jailPos)
-        count=0
-        for ghost_pos in self.particles:
-            if(temp_dict[ghost_pos] != 0):
-                break;
-            else:count+=1
-        new_particles=[]
-        if(count==len(temp_dict)):
-            self.initializeUniformly(gameState)
-        else:
-            for i in range(self.numParticles):
-                self.particles[i]=temp_dict.sample()
-            self.beliefs=temp_dict
-
-
-
-
 
     def elapseTime(self, gameState):
         """
@@ -426,12 +341,6 @@ class ParticleFilter(InferenceModule):
         essentially converts a list of particles into a belief distribution.
         """
         "*** YOUR CODE HERE ***"
-        belief_distribution=DiscreteDistribution()
-        #print (belief_distribution)
-        for i in self.particles:
-            belief_distribution[i]+=1.0
-        belief_distribution.normalize()
-        return belief_distribution
 
 
 class JointParticleFilter(ParticleFilter):
@@ -491,7 +400,6 @@ class JointParticleFilter(ParticleFilter):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
-
 
     def elapseTime(self, gameState):
         """
