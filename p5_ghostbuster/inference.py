@@ -18,8 +18,9 @@ import busters
 import game
 import util
 
-from util import manhattanDistance
 
+from util import manhattanDistance
+from itertools import product
 
 class DiscreteDistribution(dict):
     """
@@ -106,9 +107,11 @@ class DiscreteDistribution(dict):
         y = []
         choice=[]
         self.normalize()
-        for i in range(len(self)):
-            x.append(list(self.items())[i][0])
-            y.append(list(self.items())[i][1])
+        # for i in range(len(self)):
+        #     x.append(list(self.items())[i][0])
+        #     y.append(list(self.items())[i][1])
+        x = list(self.keys())
+        y = list(self.values())
         z = random.random()
         for i in range(len(self)):
             if sum(y[:i]) < z <= sum(y[:i + 1]):
@@ -372,8 +375,7 @@ class ParticleFilter(InferenceModule):
         self.particles = []
         "*** YOUR CODE HERE ***"
         for i in range(self.numParticles):
-            for j in self.legalPositions:
-                self.particles.append(j)
+            self.particles.append(self.legalPositions[i%len(self.legalPositions)])
 
 
 
@@ -395,18 +397,12 @@ class ParticleFilter(InferenceModule):
         jailPos=self.getJailPosition()
         for ghost_pos in self.particles:
             temp_dict[ghost_pos]+=self.getObservationProb(observation,pacmanPos,ghost_pos,jailPos)
-        count=0
-        for ghost_pos in self.particles:
-            if(temp_dict[ghost_pos] != 0):
-                break;
-            else:count+=1
-        new_particles=[]
-        if(count==len(temp_dict)):
+        temp_dict.normalize()
+        if(temp_dict.total()==0):
             self.initializeUniformly(gameState)
         else:
             for i in range(self.numParticles):
                 self.particles[i]=temp_dict.sample()
-            self.beliefs=temp_dict
 
 
 
@@ -418,6 +414,22 @@ class ParticleFilter(InferenceModule):
         gameState.
         """
         "*** YOUR CODE HERE ***"
+        #print("*")
+
+        tem_prob=DiscreteDistribution()
+        for old_Pos in self.particles:
+            newPosDist = self.getPositionDistribution(gameState, old_Pos)
+            self.particles[self.particles.index(old_Pos)]=newPosDist.sample()
+        ##Too slow
+        #tem_prob = DiscreteDistribution()
+        # for old_Pos in self.particles:
+        #     newPosDist = self.getPositionDistribution(gameState, old_Pos)
+        #     for per_pos in newPosDist.keys():
+        #             tem_prob[per_pos] += newPosDist[per_pos]
+        # tem_prob.normalize()
+        # for i in range(self.numParticles):
+        #     self.particles[i]=tem_prob.sample()
+
 
     def getBeliefDistribution(self):
         """
@@ -459,6 +471,11 @@ class JointParticleFilter(ParticleFilter):
         """
         self.particles = []
         "*** YOUR CODE HERE ***"
+        per_mu = list(product(self.legalPositions, self.legalPositions))
+        random.shuffle(per_mu)
+        for i in range(self.numParticles):
+            self.particles.append(per_mu[i%len(per_mu)])
+
 
     def addGhostAgent(self, agent):
         """
@@ -491,6 +508,25 @@ class JointParticleFilter(ParticleFilter):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
+        #print("*")
+        temp_dict = DiscreteDistribution()
+        pacmanPos = gameState.getPacmanPosition()
+        for ghost_pos_dual in self.particles:
+            joint_prob=1.0
+            for i in range(len(ghost_pos_dual)):
+                jailPos = self.getJailPosition(i)
+                joint_prob*=self.getObservationProb(observation[i], pacmanPos, ghost_pos_dual[i], jailPos)
+            temp_dict[ghost_pos_dual] +=joint_prob
+        temp_dict.normalize()
+        if (temp_dict.total() == 0):
+            self.initializeUniformly(gameState)
+        else:
+            for i in range(self.numParticles):
+                self.particles[i] = temp_dict.sample()
+
+
+
+
 
 
     def elapseTime(self, gameState):
@@ -499,12 +535,14 @@ class JointParticleFilter(ParticleFilter):
         gameState.
         """
         newParticles = []
+        print("*")
         for oldParticle in self.particles:
             newParticle = list(oldParticle)  # A list of ghost positions
-
             # now loop through and update each entry in newParticle...
             "*** YOUR CODE HERE ***"
-
+            for i in range(self.numGhosts):
+                newPosDist=self.getPositionDistribution(gameState, newParticle, i, self.ghostAgents[i])
+                newParticle[i]=newPosDist.sample()
             """*** END YOUR CODE HERE ***"""
             newParticles.append(tuple(newParticle))
         self.particles = newParticles
