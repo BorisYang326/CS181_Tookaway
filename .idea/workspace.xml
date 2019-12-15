@@ -4,7 +4,6 @@
     <list default="true" id="0cc3788f-f82e-4e50-b582-2043cca2f6f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,19 +20,32 @@
     </option>
   </component>
   <component name="ProjectId" id="1UXi84Gq47f754MLkC52RogiWln" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -50,6 +62,10 @@
       <workItem from="1575509085650" duration="80000" />
       <workItem from="1575509183598" duration="9000" />
       <workItem from="1575510043658" duration="507000" />
+      <workItem from="1575941585778" duration="471000" />
+      <workItem from="1575942115922" duration="96000" />
+      <workItem from="1575955804567" duration="2877000" />
+      <workItem from="1576069118257" duration="350000" />
     </task>
     <servers />
   </component>
@@ -68,5 +84,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="87" key="SettingsEditor" timestamp="1575957218157">
+      <screen x="0" y="23" width="1680" height="850" />
+    </state>
+    <state x="341" y="86" key="SettingsEditor/0.23.1680.848@0.23.1680.848" timestamp="1575956758666" />
+    <state x="278" y="87" key="SettingsEditor/0.23.1680.850@0.23.1680.850" timestamp="1575957218157" />
+    <state x="517" y="279" key="com.intellij.ide.util.TipDialog" timestamp="1576077139183">
+      <screen x="0" y="23" width="1680" height="850" />
+    </state>
+    <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.848@0.23.1680.848" timestamp="1575955804610" />
+    <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.850@0.23.1680.850" timestamp="1576077139183" />
   </component>
 </project>
