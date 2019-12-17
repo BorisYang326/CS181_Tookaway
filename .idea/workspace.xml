@@ -2,9 +2,138 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc3788f-f82e-4e50-b582-2043cca2f6f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/p5_reinforcement/temp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p5_reinforcement/qlearningAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/qlearningAgents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/create_floders.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/submit.tar" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/submit.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/temp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/test.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/1-tinygrid.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/1-tinygrid.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/2-tinygrid-noisy.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/2-tinygrid-noisy.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/3-bridge.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/3-bridge.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/4-discountgrid.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/test_cases/q6/4-discountgrid.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/teststd.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/testyb.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/analysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/autograder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/crawler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/environment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/featureExtractors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/game.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/ghostAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/grading.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/graphicsCrawlerDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/graphicsDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/graphicsGridworldDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/graphicsUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/gridworld.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/keyboardAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layout.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/capsuleClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/contestClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/mediumClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/mediumGrid.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/minimaxClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/openClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/originalClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/powerClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/smallClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/smallGrid.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/testClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/trappedClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/layouts/trickyClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/learningAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/mdp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/pacman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/pacmanAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/projectParams.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/qlearningAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/reinforcementTestClasses.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/submission_autograder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/testClasses.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/testParser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q1/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/5-coord-extractor.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/5-coord-extractor.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q10/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q2/1-bridge-grid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q2/1-bridge-grid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q2/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/1-question-3.1.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/1-question-3.1.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/2-question-3.2.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/2-question-3.2.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/3-question-3.3.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/3-question-3.3.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/4-question-3.4.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/4-question-3.4.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/5-question-3.5.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/5-question-3.5.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q3/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q4/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q5/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q6/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/1-tinygrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/1-tinygrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/2-tinygrid-noisy.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/2-tinygrid-noisy.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/3-bridge.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/3-bridge.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/4-discountgrid.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/4-discountgrid.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q7/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q8/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q8/grade-agent.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q8/grade-agent.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q9/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q9/grade-agent.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/test_cases/q9/grade-agent.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/textDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/textGridworldDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/p5_reinforcement/valueIterationAgents.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +202,8 @@
       <workItem from="1576509988999" duration="419000" />
       <workItem from="1576510631240" duration="6011000" />
       <workItem from="1576518299763" duration="404000" />
-      <workItem from="1576542807692" duration="11675000" />
+      <workItem from="1576542807692" duration="11781000" />
+      <workItem from="1576581801982" duration="1866000" />
     </task>
     <servers />
   </component>

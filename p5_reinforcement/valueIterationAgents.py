@@ -69,22 +69,22 @@ class ValueIterationAgent(ValueEstimationAgent):
         iter = 0
         while (iter < self.iterations):
             temp_dic = util.Counter()
-            print("=" * 30)
+            #print("=" * 30)
             for state in states:
                 value_list = []
                 if (not self.mdp.isTerminal(state)):
                     i = 0
                     actions = self.mdp.getPossibleActions(state)
-                    print(actions)
+                    #print(actions)
                     for action in actions:
                         i += 1
                         value_list.append(self.computeQValueFromValues(state, action))
-                    print("-" * 20)
-                    print(state, value_list)
-                    print(i)
+                    #print("-" * 20)
+                    #print(state, value_list)
+                    #print(i)
                     temp_dic[state] = max(value_list)
-                    print(temp_dic)
-                    print("-" * 20)
+                    #print(temp_dic)
+                    #print("-" * 20)
             self.values = temp_dic
             iter += 1
 
@@ -101,13 +101,13 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        # print("** invoke **")
+        # #print("** invoke **")
         action_value = 0
         trans = self.mdp.getTransitionStatesAndProbs(state, action)
         for tran in trans:
             action_value += tran[1] * (
                         self.mdp.getReward(state, action, tran[0]) + self.discount * self.values[tran[0]])
-        # print(action_value,action)
+        # #print(action_value,action)
         return action_value
         # util.raiseNotDefined()
 
@@ -180,22 +180,22 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
         states = self.mdp.getStates()
         for iter in range(self.iterations):
             # temp_dic = util.Counter()
-            print("=" * 30)
+            #print("=" * 30)
             state = states[iter % len(states)]
             value_list = []
             if (not self.mdp.isTerminal(state)):
                 i = 0
                 actions = self.mdp.getPossibleActions(state)
-                print(actions)
+                #print(actions)
                 for action in actions:
                     i += 1
                     value_list.append(self.computeQValueFromValues(state, action))
-                print("-" * 20)
-                print(state, value_list)
-                print(i)
+                #print("-" * 20)
+                #print(state, value_list)
+                #print(i)
                 # temp_dic[state] = max(value_list)
-                # print(temp_dic)
-                print("-" * 20)
+                # #print(temp_dic)
+                #print("-" * 20)
                 self.values[state] = max(value_list)
 
 
@@ -222,21 +222,21 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
         states = self.mdp.getStates()
         iter = 0
         set_dic = {}
-        #print("**   invoke   **")
+        ##print("**   invoke   **")
         for state in states:
             set_dic[state] = set()
         for state in states:
             value_list = []
             if (not self.mdp.isTerminal(state)):
                 actions = self.mdp.getPossibleActions(state)
-                # print(actions)
+                # #print(actions)
                 for action in actions:
                     value_list.append(self.computeQValueFromValues(state, action))
                     trans = self.mdp.getTransitionStatesAndProbs(state, action)
-                    print(trans)
+                    #print(trans)
                     for tran in trans:
                         set_dic[tran[0]].add(state)
-        #print(set_dic)
+        ##print(set_dic)
         error_heap = util.PriorityQueue()
         for state in states:
             value_list = []
@@ -245,14 +245,14 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
                 for action in actions:
                     value_list.append(self.computeQValueFromValues(state, action))
                 diff = abs(max(value_list)-self.values[state])
-        #         print(diff)
-        #         print('-'*10)
-        #         print(self.values[state])
-        #         print("*"*10)
-        # print(diff)
-            #print(-1 * diff)
-            #print(type(-1*diff))
-                #print(type(state),type(-diff))
+        #         #print(diff)
+        #         #print('-'*10)
+        #         #print(self.values[state])
+        #         #print("*"*10)
+        # #print(diff)
+            ##print(-1 * diff)
+            ##print(type(-1*diff))
+                ##print(type(state),type(-diff))
                 error_heap.update(state,-diff)
 
         while (iter < self.iterations):
@@ -270,9 +270,9 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
                 if (not self.mdp.isTerminal(pre_state)):
                     actions = self.mdp.getPossibleActions(pre_state)
                     for action in actions:
-                        #print("-"*20)
+                        ##print("-"*20)
                         value_list_next.append(self.computeQValueFromValues(pre_state, action))
-                        #print(value_list)
+                        ##print(value_list)
                     diff_next = abs(max(value_list_next)-self.values[pre_state])
                     if (diff_next > self.theta):
                         error_heap.update(pre_state,-diff_next)

@@ -64,7 +64,7 @@ class QLearningAgent(ReinforcementAgent):
           terminal state, you should return a value of 0.0.
         """
         "*** YOUR CODE HERE ***"
-        #print("***      invoke compute_value     ***")
+        ##print("***      invoke compute_value     ***")
         final_value=0.0
         value_list=[]
         legal_list=self.getLegalActions(state)
@@ -72,8 +72,8 @@ class QLearningAgent(ReinforcementAgent):
             for action in legal_list:
                 value_list.append(self.getQValue(state,action))
             final_value=max(value_list)
-        #print (value_list,final_value,legal_list,state)
-        #print("-"*10)
+        ##print (value_list,final_value,legal_list,state)
+        ##print("-"*10)
         return final_value
 
         util.raiseNotDefined()
@@ -85,7 +85,7 @@ class QLearningAgent(ReinforcementAgent):
           you should return None.
         """
         "*** YOUR CODE HERE ***"
-        #print("***      invoke compute_action     ***")
+        ##print("***      invoke compute_action     ***")
         final_action = None
         value_list = []
         action_list= []
@@ -95,23 +95,23 @@ class QLearningAgent(ReinforcementAgent):
             for action in legal_list:
                 value_list.append(self.getQValue(state, action))
                 action_list.append(action)
-            ##print("-" * 20)
+            ###print("-" * 20)
             max_value=max(value_list)
-            ##print(action_list)
-            ##print(value_list)
+            ###print(action_list)
+            ###print(value_list)
             for i in range(len(value_list)):
                 if(value_list[i]==max_value):
                     overlap_action_list.append(action_list[i])
 
 
-            #print_result=random.choice(overlap_action_list)
-            #print(overlap_action_list,#print_result,state)
-            #print("-" * 10)
-            return #print_result
+            print_result=random.choice(overlap_action_list)
+            ##print(overlap_action_list,##print_result,state)
+            ##print("-" * 10)
+            return print_result
         else:
 
-            #print(None,state)
-            #print("-" * 10)
+            ##print(None,state)
+            ##print("-" * 10)
             return None
         util.raiseNotDefined()
 
@@ -130,13 +130,11 @@ class QLearningAgent(ReinforcementAgent):
         legalActions = self.getLegalActions(state)
         action = None
         "*** YOUR CODE HERE ***"
-        ##print("***      invoke get_Action     ***")
+        ###print("***      invoke get_Action     ***")
         if (len(legalActions) != 0):
             if(util.flipCoin(self.epsilon)):
                 action=random.choice(legalActions)
             else:action=self.getPolicy(state)
-        #print(action)
-        ##print("-" * 10)
         return action
         util.raiseNotDefined()
 
@@ -150,16 +148,16 @@ class QLearningAgent(ReinforcementAgent):
           it will be called on your behalf
         """
         "*** YOUR CODE HERE ***"
-        #print("*****************      invoke update     ********************")
-        #print(state,nextState,action)
+        ##print("*****************      invoke update     ********************")
+        ##print(state,nextState,action)
         if(nextState):
             # pre_value=(1.0-self.alpha)*self.getQValue(state,action)
             # reward_value=self.alpha*reward
             # new_value=self.alpha*self.discount*self.getValue(nextState)
             #self.Q_value[(state,action)]=pre_value+reward_value+new_value
             self.Q_value[(state, action)]=(1.0-self.alpha)*self.getQValue(state,action)+self.alpha*(reward+self.discount*self.getValue(nextState))
-            #print (self.Q_value)
-            #print("*****************      end invoke update     ********************")
+            ##print (self.Q_value)
+            ##print("*****************      end invoke update     ********************")
         #util.raiseNotDefined()
 
     def getPolicy(self, state):
@@ -239,6 +237,6 @@ class ApproximateQAgent(PacmanQAgent):
 
         # did we finish training?
         if self.episodesSoFar == self.numTraining:
-            # you might want to #print your weights here for debugging
+            # you might want to ##print your weights here for debugging
             "*** YOUR CODE HERE ***"
             pass
