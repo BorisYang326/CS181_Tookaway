@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc3788f-f82e-4e50-b582-2043cca2f6f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/BBTAN-master.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p5_reinforcement/valueIterationAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/valueIterationAgents.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +74,11 @@
       <workItem from="1575942115922" duration="96000" />
       <workItem from="1575955804567" duration="2877000" />
       <workItem from="1576069118257" duration="350000" />
+      <workItem from="1576478701981" duration="8117000" />
+      <workItem from="1576491755401" duration="6219000" />
+      <workItem from="1576509988999" duration="419000" />
+      <workItem from="1576510631240" duration="6011000" />
+      <workItem from="1576518299763" duration="404000" />
     </task>
     <servers />
   </component>
@@ -86,15 +99,26 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="545" y="57" key="#valueIterationAgents" timestamp="1576514395479">
+      <screen x="0" y="23" width="1680" height="851" />
+    </state>
+    <state x="545" y="57" key="#valueIterationAgents/0.23.1680.851@0.23.1680.851" timestamp="1576514395479" />
+    <state x="430" y="7" key="CommitChangelistDialog2" timestamp="1576516224990">
+      <screen x="0" y="0" width="1680" height="945" />
+    </state>
+    <state x="430" y="7" key="CommitChangelistDialog2/0.0.1680.945@0.0.1680.945" timestamp="1576516224990" />
+    <state x="430" y="29" key="CommitChangelistDialog2/0.23.1680.851@0.23.1680.851" timestamp="1576514750751" />
     <state x="278" y="87" key="SettingsEditor" timestamp="1575957218157">
       <screen x="0" y="23" width="1680" height="850" />
     </state>
     <state x="341" y="86" key="SettingsEditor/0.23.1680.848@0.23.1680.848" timestamp="1575956758666" />
     <state x="278" y="87" key="SettingsEditor/0.23.1680.850@0.23.1680.850" timestamp="1575957218157" />
-    <state x="517" y="279" key="com.intellij.ide.util.TipDialog" timestamp="1576077139183">
-      <screen x="0" y="23" width="1680" height="850" />
+    <state x="517" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1576518299746">
+      <screen x="0" y="0" width="1680" height="945" />
     </state>
+    <state x="517" y="284" key="com.intellij.ide.util.TipDialog/0.0.1680.945@0.0.1680.945" timestamp="1576518299745" />
     <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.848@0.23.1680.848" timestamp="1575955804610" />
-    <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.850@0.23.1680.850" timestamp="1576077139183" />
+    <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.850@0.23.1680.850" timestamp="1576491756396" />
+    <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.851@0.23.1680.851" timestamp="1576509988895" />
   </component>
 </project>

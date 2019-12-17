@@ -31,6 +31,7 @@ import mdp, util
 from learningAgents import ValueEstimationAgent
 import collections
 
+
 class ValueIterationAgent(ValueEstimationAgent):
     """
         * Please read learningAgents.py before reading this.*
@@ -40,7 +41,8 @@ class ValueIterationAgent(ValueEstimationAgent):
         for a given number of iterations using the supplied
         discount factor.
     """
-    def __init__(self, mdp, discount = 0.9, iterations = 100):
+
+    def __init__(self, mdp, discount=0.9, iterations=100):
         """
           Your value iteration agent should take an mdp on
           construction, run the indicated number of iterations
@@ -56,20 +58,42 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.mdp = mdp
         self.discount = discount
         self.iterations = iterations
-        self.values = util.Counter() # A Counter is a dict with default 0
+        self.values = util.Counter()  # A Counter is a dict with default 0
         self.runValueIteration()
 
     def runValueIteration(self):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
 
+        states = self.mdp.getStates()
+        iter = 0
+        while (iter < self.iterations):
+            temp_dic = util.Counter()
+            print("=" * 30)
+            for state in states:
+                value_list = []
+                if (not self.mdp.isTerminal(state)):
+                    i = 0
+                    actions = self.mdp.getPossibleActions(state)
+                    print(actions)
+                    for action in actions:
+                        i += 1
+                        value_list.append(self.computeQValueFromValues(state, action))
+                    print("-" * 20)
+                    print(state, value_list)
+                    print(i)
+                    temp_dic[state] = max(value_list)
+                    print(temp_dic)
+                    print("-" * 20)
+            self.values = temp_dic
+            iter += 1
 
     def getValue(self, state):
         """
           Return the value of the state (computed in __init__).
         """
-        return self.values[state]
 
+        return self.values[state]
 
     def computeQValueFromValues(self, state, action):
         """
@@ -77,7 +101,15 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        # print("** invoke **")
+        action_value = 0
+        trans = self.mdp.getTransitionStatesAndProbs(state, action)
+        for tran in trans:
+            action_value += tran[1] * (
+                        self.mdp.getReward(state, action, tran[0]) + self.discount * self.values[tran[0]])
+        # print(action_value,action)
+        return action_value
+        # util.raiseNotDefined()
 
     def computeActionFromValues(self, state):
         """
@@ -89,7 +121,20 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        value_list = []
+        action_list = []
+        final_action = None
+        if (not self.mdp.isTerminal(state)):
+            actions = self.mdp.getPossibleActions(state)
+            for action in actions:
+                value_list.append(self.computeQValueFromValues(state, action))
+                action_list.append(action)
+            final_action = action_list[value_list.index(max(value_list))]
+        else:
+            pass
+        return final_action
+
+        # util.raiseNotDefined()
 
     def getPolicy(self, state):
         return self.computeActionFromValues(state)
@@ -101,6 +146,7 @@ class ValueIterationAgent(ValueEstimationAgent):
     def getQValue(self, state, action):
         return self.computeQValueFromValues(state, action)
 
+
 class AsynchronousValueIterationAgent(ValueIterationAgent):
     """
         * Please read learningAgents.py before reading this.*
@@ -110,7 +156,8 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
         for a given number of iterations using the supplied
         discount factor.
     """
-    def __init__(self, mdp, discount = 0.9, iterations = 1000):
+
+    def __init__(self, mdp, discount=0.9, iterations=1000):
         """
           Your cyclic value iteration agent should take an mdp on
           construction, run the indicated number of iterations,
@@ -130,6 +177,27 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        states = self.mdp.getStates()
+        for iter in range(self.iterations):
+            # temp_dic = util.Counter()
+            print("=" * 30)
+            state = states[iter % len(states)]
+            value_list = []
+            if (not self.mdp.isTerminal(state)):
+                i = 0
+                actions = self.mdp.getPossibleActions(state)
+                print(actions)
+                for action in actions:
+                    i += 1
+                    value_list.append(self.computeQValueFromValues(state, action))
+                print("-" * 20)
+                print(state, value_list)
+                print(i)
+                # temp_dic[state] = max(value_list)
+                # print(temp_dic)
+                print("-" * 20)
+                self.values[state] = max(value_list)
+
 
 class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     """
@@ -139,7 +207,8 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
         (see mdp.py) on initialization and runs prioritized sweeping value iteration
         for a given number of iterations using the supplied parameters.
     """
-    def __init__(self, mdp, discount = 0.9, iterations = 100, theta = 1e-5):
+
+    def __init__(self, mdp, discount=0.9, iterations=100, theta=1e-5):
         """
           Your prioritized sweeping value iteration agent should take an mdp on
           construction, run the indicated number of iterations,
@@ -150,4 +219,61 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        states = self.mdp.getStates()
+        iter = 0
+        set_dic = {}
+        #print("**   invoke   **")
+        for state in states:
+            set_dic[state] = set()
+        for state in states:
+            value_list = []
+            if (not self.mdp.isTerminal(state)):
+                actions = self.mdp.getPossibleActions(state)
+                # print(actions)
+                for action in actions:
+                    value_list.append(self.computeQValueFromValues(state, action))
+                    trans = self.mdp.getTransitionStatesAndProbs(state, action)
+                    print(trans)
+                    for tran in trans:
+                        set_dic[tran[0]].add(state)
+        #print(set_dic)
+        error_heap = util.PriorityQueue()
+        for state in states:
+            value_list = []
+            if (not self.mdp.isTerminal(state)):
+                actions = self.mdp.getPossibleActions(state)
+                for action in actions:
+                    value_list.append(self.computeQValueFromValues(state, action))
+                diff = abs(max(value_list)-self.values[state])
+        #         print(diff)
+        #         print('-'*10)
+        #         print(self.values[state])
+        #         print("*"*10)
+        # print(diff)
+            #print(-1 * diff)
+            #print(type(-1*diff))
+                #print(type(state),type(-diff))
+                error_heap.update(state,-diff)
 
+        while (iter < self.iterations):
+            if (error_heap.isEmpty()):
+                break
+            cur_state = error_heap.pop()
+            value_list_cur = []
+            if (not self.mdp.isTerminal(cur_state)):
+                actions = self.mdp.getPossibleActions(cur_state)
+                for action in actions:
+                    value_list_cur.append(self.computeQValueFromValues(cur_state, action))
+                self.values[cur_state] = max(value_list_cur)
+            for pre_state in set_dic[cur_state]:
+                value_list_next = []
+                if (not self.mdp.isTerminal(pre_state)):
+                    actions = self.mdp.getPossibleActions(pre_state)
+                    for action in actions:
+                        #print("-"*20)
+                        value_list_next.append(self.computeQValueFromValues(pre_state, action))
+                        #print(value_list)
+                    diff_next = abs(max(value_list_next)-self.values[pre_state])
+                    if (diff_next > self.theta):
+                        error_heap.update(pre_state,-diff_next)
+            iter += 1
