@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc3788f-f82e-4e50-b582-2043cca2f6f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/QDN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p5_reinforcement/qlearningAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/qlearningAgents.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p5_reinforcement/submit.tar" beforeDir="false" afterPath="$PROJECT_DIR$/p5_reinforcement/submit.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_bbtan/BBTAN-master/bbtan.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_bbtan/BBTAN-master/bbtan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,8 @@
       <workItem from="1576510631240" duration="6011000" />
       <workItem from="1576518299763" duration="404000" />
       <workItem from="1576542807692" duration="11781000" />
-      <workItem from="1576581801982" duration="4555000" />
+      <workItem from="1576581801982" duration="5006000" />
+      <workItem from="1576845047777" duration="860000" />
     </task>
     <servers />
   </component>
@@ -121,13 +122,14 @@
     </state>
     <state x="341" y="86" key="SettingsEditor/0.23.1680.848@0.23.1680.848" timestamp="1575956758666" />
     <state x="278" y="87" key="SettingsEditor/0.23.1680.850@0.23.1680.850" timestamp="1575957218157" />
-    <state x="517" y="279" key="com.intellij.ide.util.TipDialog" timestamp="1576542808814">
-      <screen x="0" y="23" width="1680" height="851" />
+    <state x="517" y="280" key="com.intellij.ide.util.TipDialog" timestamp="1576845048354">
+      <screen x="0" y="23" width="1680" height="853" />
     </state>
     <state x="517" y="284" key="com.intellij.ide.util.TipDialog/0.0.1680.945@0.0.1680.945" timestamp="1576518299745" />
     <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.848@0.23.1680.848" timestamp="1575955804610" />
     <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.850@0.23.1680.850" timestamp="1576491756396" />
     <state x="517" y="279" key="com.intellij.ide.util.TipDialog/0.23.1680.851@0.23.1680.851" timestamp="1576542808814" />
+    <state x="517" y="280" key="com.intellij.ide.util.TipDialog/0.23.1680.853@0.23.1680.853" timestamp="1576845048354" />
     <state x="0" y="23" width="1638" height="831" key="dock-window-1" timestamp="1576579863930">
       <screen x="0" y="23" width="1920" height="983" />
     </state>
